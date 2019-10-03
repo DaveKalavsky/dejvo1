@@ -27,6 +27,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Log in"
+                    android:textColor="@android:color/white"
                     android:textAppearance="?android:textAppearanceLarge"
                     />
 
@@ -35,7 +36,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Email:"
+                android:hint="Email"
+                android:textColorHint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
                 android:id="@+id/email_login"
                 />
 
@@ -45,6 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="Password:"
+                android:padding="15dp"
+                android:background="@drawable/edittext_background"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
                 android:id="@+id/password_login"
                 />
 
@@ -54,6 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Log in"
+                android:background="@drawable/edittext_background"
+                android:textColor="@android:color/white"
                 android:id="@+id/btn_login"
                 android:textAppearance="?android:textAppearanceMedium"
                 />
@@ -64,13 +75,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/forget_password"
-                android:text="Forget Password?"
+                android:text="Forgot Password?"
+                android:textColor="@android:color/white"
                 android:padding="5dp"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
                 android:gravity="center"
                 android:id="@+id/signup_reg"
                 android:text="Don't have an account ? Sign up here. "
