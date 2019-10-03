@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
  public class RegistrationActivity extends AppCompatActivity {
 
     private EditText mEmail;
@@ -70,6 +71,7 @@ import com.google.firebase.auth.FirebaseAuth;
                 }
 
                 mDialog.setMessage("Processing..");
+                mDialog.show();
 
 
                mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -78,7 +80,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
                         if(task.isSuccessful()) {
 
+
+                            mDialog.dismiss();
                             Toast.makeText(getApplicationContext(),"Registration complete",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+
+
+
 
                         }else {
                             mDialog.dismiss();
