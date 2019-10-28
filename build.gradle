@@ -16,6 +16,8 @@ buildscript {
 }
 
 allprojects {
+    ext.supportLibraryVersion = '29.0.0'
+
     repositories {
         google()
         jcenter()
