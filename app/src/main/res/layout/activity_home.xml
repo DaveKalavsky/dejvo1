@@ -25,6 +25,7 @@
         android:layout_gravity="start"
         android:id="@+id/naView"
         app:menu="@menu/navmenu"
+        app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/toolbar_color"
         android:fitsSystemWindows="true" />
 
