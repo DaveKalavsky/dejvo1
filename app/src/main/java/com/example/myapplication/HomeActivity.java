@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         }
-        if(fragment!=null) {
+        if(fragment != null) {
 
 
 

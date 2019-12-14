@@ -11,8 +11,6 @@
     <color name="dashboardColor">#FF9B6309</color>
 
     <color name="incomeColor">#FF240740</color>
-
-    <color name="expense_color">FF6C042E</color>
-
+    <color name="expense_color">#FF5667</color>
 
 </resources>
