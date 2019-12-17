@@ -9,18 +9,25 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appbar"/>
+        android:id="@+id/appbar">
+
+
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/my_toolbar"
             app:titleTextColor="@android:color/white"
-            android:background="@color/toolbar_color"
-    />
+            android:background="@color/toolbar_color">
 
-    <include layout="@layout/content_main"/>
 
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <include
+        layout="@layout/content_main" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

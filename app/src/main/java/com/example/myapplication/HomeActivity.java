@@ -46,7 +46,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
-                this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+                this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close
+        );
 
 
         drawerLayout.addDrawerListener(toggle);
@@ -84,8 +85,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         bottomNavigationView.setItemBackgroundResource(R.color.expense_color);
                         return true;
 
-                    default:
-                        return false;
+                        default:
+                            return false;
 
 
 

@@ -14,11 +14,23 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:menu="@menu/bottommenu"
-        android:layout_alignParentBottom="true"
-        >
-
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
 
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+     <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:id="@+id/main_frame"
+         android:layout_above="@+id/bottomnavigationbar"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true">
+
+
+     </FrameLayout>
+
 
 </RelativeLayout>
