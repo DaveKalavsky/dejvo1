@@ -57,7 +57,7 @@ public class DashBoardFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mIncomeDatabase;
-    private DatabaseReference mExpenseDatabase;
+    public DatabaseReference mExpenseDatabase;
 
 
     @Override
@@ -130,6 +130,43 @@ public class DashBoardFragment extends Fragment {
         return myview;
     }
 
+
+
+    private void ftAnimation() {
+
+        if (isOpen) {
+
+            addData();
+
+            fab_income_btn.startAnimation(FadClose);
+            fab_expense_btn.startAnimation(FadClose);
+            fab_income_btn.setClickable(false);
+            fab_expense_btn.setClickable(false);
+
+            fab_income_txt.startAnimation(FadClose);
+            fab_expense_txt.startAnimation(FadClose);
+            fab_income_txt.setClickable(false);
+            fab_expense_txt.setClickable(false);
+            isOpen=false;
+        }else {
+
+            fab_income_btn.startAnimation(FadOpen);
+            fab_expense_btn.startAnimation(FadOpen);
+            fab_income_btn.setClickable(true);
+            fab_expense_btn.setClickable(true);
+
+            fab_income_txt.startAnimation(FadOpen);
+            fab_expense_txt.startAnimation(FadOpen);
+            fab_income_txt.setClickable(true);
+            fab_expense_txt.setClickable(true);
+            isOpen=true;
+
+        }
+
+
+
+    }
+
     private void addData() {
 
         fab_income_btn.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +174,6 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
 
                 incomeDataInsert();
-
 
 
             }
@@ -164,6 +200,7 @@ public class DashBoardFragment extends Fragment {
         mydialog.setView(myview);
          final AlertDialog dialog=mydialog.create();
 
+         dialog.setCancelable(false);
 
         final EditText edtAmount=myview.findViewById(R.id.ammount_edt);
         final EditText edtType=myview.findViewById(R.id.type_edt);
@@ -177,14 +214,13 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String type=edtType.getText().toString().trim();
-                String amount=edtAmount.getText().toString().trim();
-                String note=edtNote.getText().toString().trim();
-
+                String type = edtType.getText().toString().trim();
+                String amount = edtAmount.getText().toString().trim();
+                String note = edtNote.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(type)) {
-                   edtType.setError("Required Field..");
+                    edtType.setError("Required Field..");
                     return;
 
                 }
@@ -195,7 +231,7 @@ public class DashBoardFragment extends Fragment {
                     return;
 
                 }
-                int ourammontint=Integer.parseInt(amount);
+                int ourammontint = Integer.parseInt(amount);
 
                 if (TextUtils.isEmpty(note)) {
 
@@ -204,16 +240,19 @@ public class DashBoardFragment extends Fragment {
                     return;
                 }
 
-                String id=mIncomeDatabase.push().getKey();
+                String id = mIncomeDatabase.push().getKey();
 
-                String mDate= DateFormat.getDateInstance().format(new Date());
+                String mDate = DateFormat.getDateInstance().format(new Date());
 
-                Data data=new Data(ourammontint,type,note,id,mDate);
+                Data data = new Data(ourammontint, type, note, id, mDate);
 
                 mIncomeDatabase.child(id).setValue(data);
-                Toast.makeText(getActivity(),"Data added.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Data added.", Toast.LENGTH_SHORT).show();
+
+                ftAnimation();
 
                 dialog.dismiss();
+
             }
 
         });
@@ -223,6 +262,7 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                ftAnimation();
                 dialog.dismiss();
             }
         });
@@ -238,7 +278,11 @@ public class DashBoardFragment extends Fragment {
         View myview=inflater.inflate(R.layout.custom_layout_for_insertdata,null);
         mydialog.setView(myview);
 
+
+
         final AlertDialog dialog=mydialog.create();
+
+        mydialog.setCancelable(false);
 
         final EditText amount=myview.findViewById(R.id.ammount_edt);
         final EditText type=myview.findViewById(R.id.type_edt);
@@ -262,6 +306,9 @@ public class DashBoardFragment extends Fragment {
                     return;
 
                 }
+
+                int inamount=Integer.parseInt(tmAmount);
+
                 if(TextUtils.isEmpty(tmtype)){
                     type.setError("Required Field..");
                     return;
@@ -272,12 +319,24 @@ public class DashBoardFragment extends Fragment {
                     note.setError("Required Field..");
                     return;
                 }
+
+                String id=mExpenseDatabase.push().getKey();
+                String mDate=DateFormat.getDateInstance().format(new Date());
+
+                Data data=new Data(inamount,tmtype,tmnote,id,mDate);
+                mExpenseDatabase.child(id).setValue(data);
+
+
+                ftAnimation();
+
+                dialog.dismiss();
             }
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ftAnimation();
                 dialog.dismiss();
             }
         });

@@ -7,11 +7,12 @@ public class Data {
     private String note;
     private String id;
 
-    public Data(int amount, String type, String note, String id) {
+    public Data(int amount, String type, String note, String id , String date) {
         this.amount = amount;
         this.type = type;
         this.note = note;
         this.id = id;
+        this.date =date;
     }
 
     public int getAmount() {
@@ -56,17 +57,10 @@ public class Data {
 
     private String date;
 
-    public Data(int ourammontint, String type, String note, String id, String mDate) {
-
-
-
+    public Data () {
 
 
 
 
     }
-
-
-
-
 }
