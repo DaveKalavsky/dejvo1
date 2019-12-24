@@ -12,5 +12,9 @@
 
     <color name="incomeColor">#FF240740</color>
     <color name="expense_color">#FF5667</color>
+    
+    <color name="date_color">#FF270648</color>
+
+    <color name="expense_amount">#FFEC1D06</color>
 
 </resources>

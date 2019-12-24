@@ -329,6 +329,8 @@ public class DashBoardFragment extends Fragment {
 
                 ftAnimation();
 
+                Toast.makeText(getActivity(),"Data added",Toast.LENGTH_SHORT).show();
+
                 dialog.dismiss();
             }
         });
