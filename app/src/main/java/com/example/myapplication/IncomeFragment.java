@@ -17,8 +17,11 @@ import com.example.myapplication.model.Data;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class IncomeFragment extends Fragment {
@@ -31,6 +34,8 @@ public class IncomeFragment extends Fragment {
     //recyclerView
 
     private RecyclerView recyclerView;
+
+    public TextView incomeTotalSum;
 
 
     public IncomeFragment() {
@@ -51,6 +56,8 @@ public class IncomeFragment extends Fragment {
 
         mIncomeDatabase=FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
 
+        incomeTotalSum=myview.findViewById(R.id.income_txt_result);
+
         recyclerView=myview.findViewById(R.id.recycler_id_income);
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
@@ -59,6 +66,34 @@ public class IncomeFragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
+
+
+        mIncomeDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                int totalvalue = 0;
+
+                for (DataSnapshot mysnapshot:dataSnapshot.getChildren()) {
+
+                    Data data=mysnapshot.getValue(Data.class);
+
+                    totalvalue+=data.getAmount();
+
+                    String stTotalvalue=String.valueOf(totalvalue);
+
+                    incomeTotalSum.setText(stTotalvalue);
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
@@ -81,12 +116,19 @@ public class IncomeFragment extends Fragment {
 
                 {
             @Override
-            protected void populateViewHolder(MyviewHolder myviewHolder, Data model, int position) {
+            protected void populateViewHolder(MyviewHolder viewHolder, Data model, int position) {
 
                 viewHolder.setType(model.getType());
+                viewHolder.setNote(model.getNote());
+                viewHolder.setDate(model.getDate());
+                viewHolder.setAmount(model.getAmount());
+
 
             }
         };
+
+
+        recyclerView.setAdapter(adapter);
 
     }
     public static class MyviewHolder extends RecyclerView.ViewHolder{
