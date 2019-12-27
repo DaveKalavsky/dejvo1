@@ -24,7 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
-    private FrameLayout frameLayout;
+    public FrameLayout frameLayout;
 
     private DashBoardFragment dashBoardFragment;
     private IncomeFragment incomeFragment;
