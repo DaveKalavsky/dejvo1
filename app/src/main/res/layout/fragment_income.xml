@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".IncomeFragment">
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,11 +62,13 @@
 
     </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_id_income">
-        </androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_id_income">
+    </androidx.recyclerview.widget.RecyclerView>
+
+
 
 
 </LinearLayout>

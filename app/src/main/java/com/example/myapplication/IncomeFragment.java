@@ -40,7 +40,7 @@ public class IncomeFragment extends Fragment {
 
     //recyclerView
 
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
 
     public TextView incomeTotalSum;
 
@@ -63,9 +63,6 @@ public class IncomeFragment extends Fragment {
 
 
 
-    public IncomeFragment() {
-        // Required empty public constructor
-    }
 
 
     @Override
@@ -107,7 +104,7 @@ public class IncomeFragment extends Fragment {
 
                     String stTotalvalue=String.valueOf(totalvalue);
 
-                    incomeTotalSum.setText(stTotalvalue);
+                    incomeTotalSum.setText(stTotalvalue+".00");
 
                 }
 
@@ -175,7 +172,7 @@ public class IncomeFragment extends Fragment {
         View mView;
 
 
-        public MyviewHolder(@NonNull View itemView) {
+        public MyviewHolder(View itemView) {
             super(itemView);
             mView=itemView;
         }

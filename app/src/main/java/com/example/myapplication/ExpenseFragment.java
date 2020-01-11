@@ -97,7 +97,7 @@ public class ExpenseFragment extends Fragment {
 
                     String srtExpensesum=String.valueOf(expenseSum);
 
-                    expenseSumResult.setText(srtExpensesum);
+                    expenseSumResult.setText(srtExpensesum+".00");
                 }
 
             }
@@ -241,6 +241,8 @@ public class ExpenseFragment extends Fragment {
 
                 mExpenseDatabase.child(post_key).setValue(data);
 
+                dialog.dismiss();
+
             }
         });
 
@@ -248,6 +250,7 @@ public class ExpenseFragment extends Fragment {
            @Override
            public void onClick(View v) {
 
+               mExpenseDatabase.child(post_key).removeValue();
                dialog.dismiss();
 
            }
